@@ -6,8 +6,7 @@ export default ({ req }) => {
 
     return axios.create({
       baseURL:
-        'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local',
-        // 'http://192-168-49-2.kubernetes.default.svc.cluster.local',
+        'http://caboverde-vendas-prod.xyz',
       headers: req.headers,
     });
   } else {
