@@ -16,7 +16,6 @@ jobs:
         env:
           KUBE_CONFIG: ${{ secrets.K8S_AWS }}
         with:
-          args: 
-            apply -f infra/k8s
-            apply -f infra/k8s-prod
+          args: apply -f infra/k8s
+            
           
