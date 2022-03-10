@@ -1,4 +1,4 @@
-name: deploy-manifests
+name: deploy-manifests-stag
 
 on:
   push:
@@ -12,10 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions-hub/kubectl@master
-        env:
-          KUBE_CONFIG: ${{ secrets.K8S_AWS }}
+      - uses: steebchen/kubectl@v2.0.0
         with:
           config: ${{ secrets.K8S_AWS }}
           version: v1.21.0 
-          command: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod
+          command: kubectl apply -f infra/k8s/stag && kubectl apply -f infra/k8s-stag
+          
