@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: steebchen/kubectl@v2.0.0
+      - uses: digitalocean/action-doctl@v2
         with:
-          config: ${{ secrets.K8S_AWS }}
-          version: v1.21.0 
-          command: kubectl apply -f infra/k8s/stag && kubectl apply -f infra/k8s-stag
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save sales
+      - run: kubectl apply -f infra/k8s/stag && kubectl apply -f infra/k8s-stag
           
