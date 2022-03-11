@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: orders-depl
+  name: orders-depl-stag
   namespace: staging
 spec:
   replicas: 1
@@ -36,7 +36,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: orders-srv
+  name: orders-srv-stag
   namespace: staging
 spec:
   selector:

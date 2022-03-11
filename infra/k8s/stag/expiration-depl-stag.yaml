@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: expiration-depl
+  name: expiration-depl-stag
   namespace: staging
 spec:
   replicas: 1
