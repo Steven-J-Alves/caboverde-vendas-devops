@@ -1,9 +1,9 @@
-name: deploy-manifests
+name: deploy-manifests-stag
 
 on:
   push:
     branches: 
-      - master
+      - release-*
     paths:
       - 'infra/**'
 
@@ -16,5 +16,4 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save sales
-      - run: kubectl delete -f infra/k8s-stag
-      - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-prod
+      - run: kubectl apply -f infra/k8s && kubectl apply -f infra/k8s-stag
