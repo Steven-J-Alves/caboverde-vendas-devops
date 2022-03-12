@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-service-staging
+  name: ingress-service
   namespace: staging
   annotations:
     kubernetes.io/ingress.class: nginx
@@ -61,7 +61,7 @@ metadata:
     app.kubernetes.io/version: 0.32.0
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: controller
-  name: ingress-nginx-controller-staging
+  name: ingress-nginx-controller
   namespace: staging
 spec:
   type: LoadBalancer
