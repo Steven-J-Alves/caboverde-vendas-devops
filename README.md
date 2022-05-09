@@ -2,7 +2,7 @@ dockerhub.com
 digitalocean.com
 aws.com
 
-
+---
 install virtualbox
 install minkube
 install docker
@@ -12,9 +12,25 @@ install doctl
 install skaffold
 install ansible
 install terraform
+
+---
+cicd
 github actions
+
+
+---
+local
+kubectl config view
+kubectl config use-context <name>
 
 sudo vi /etc/hosts
 docker login
-
 cmd -> skaffold dev
+
+prod
+doctl auth init 
+doctl kubernetes cluster kubeconfig save caboverde-vendas-devops
+
+stag
+---
+
