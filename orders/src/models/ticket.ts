@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 import { Order, OrderStatus } from './order';
 
-interface TicketAttrs {
+interface TicketAttrs extends mongoose.Document{
   id: string;
   title: string;
   price: number;
@@ -64,6 +64,7 @@ ticketSchema.statics.build = (attrs: TicketAttrs) => {
 ticketSchema.methods.isReserved = async function () {
   // this === the ticket document that we just called 'isReserved' on
   const existingOrder = await Order.findOne({
+    //@ts-ignore
     ticket: this,
     status: {
       $in: [
