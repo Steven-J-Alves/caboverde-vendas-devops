@@ -1,7 +1,7 @@
 dockerhub.com
 digitalocean.com
 aws.com
-
+namecheap.com
 ---
 install virtualbox
 install minkube
@@ -33,4 +33,5 @@ doctl kubernetes cluster kubeconfig save caboverde-vendas-devops
 
 stag
 ---
+domains
 
