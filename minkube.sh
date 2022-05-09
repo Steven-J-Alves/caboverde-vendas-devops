@@ -20,5 +20,5 @@ minikube addons --profile ${PROFILE} enable ingress
 
 minikube start --profile $PROFILE
 
-minikube addons --profile ${PROFILE} enable registry
+# minikube addons --profile ${PROFILE} enable registry
 }
