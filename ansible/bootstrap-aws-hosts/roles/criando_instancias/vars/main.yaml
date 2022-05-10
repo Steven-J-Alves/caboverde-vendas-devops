@@ -2,7 +2,7 @@
 # vars file for criando-instancias
 instance_type: t2.medium
 sec_group_name: sales-devops-tcc
-image: ami-0d527b8c289b4af7f
+image: ami-0d51579f02ac97d77
 keypair: sales-devops-tcc
 region: eu-central-1
 count: 3
