@@ -35,4 +35,47 @@ stag
 ---
 domains
 
-// 'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local' dev api
+---
+To make dynamic
+URL
+'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local' 
+http://www.caboverde-vendas-prod.xyz/
+http://www.caboverde-vendas-stag.xyz/
+
+DATABASE
+
+ENVS
+
+---
+1. run app-bootstrap.sh
+2. apply ingress
+3. apply manifests
+
+
+TODO:
+refactor
+helm
+private charts repo 
+private docker registry
+verdaccio
+nexus or artifactory
+ingress with traffic
+
+deploy jenkins in k8s
+
+monitoramento
+logs
+service mesh
+observabilidade
+tracing
+
+local and public dns mangament
+
+new relic 
+sentry
+
+api gateway
+cors
+nginx proxy
+
+deployment type (canary with istio)
