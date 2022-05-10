@@ -1,3 +1,5 @@
 node_modules
 .DS_Store
 ansible/venv
+ansible/create-install-aws-k8s/hosts
+ansible/bootstrap-aws-hosts/hosts
