@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: ticketing.dev
+    - host: caboverde-vendas.dev
       http:
         paths:
           - path: /api/payments/?(.*)
@@ -45,13 +45,4 @@ spec:
                 name: client-srv
                 port:
                   number: 3000
-# COM
-# coments
-# comen
-# cs
-# ddwd
-# wdwddsdsd
-# mc
-# cmn
-# wdw
-## comen
+                  
