@@ -38,9 +38,9 @@ domains
 ---
 To make dynamic
 URL
-'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local' 
-http://www.caboverde-vendas-prod.xyz/
-http://www.caboverde-vendas-stag.xyz/
+'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local' //dev
+http://www.caboverde-vendas-prod.xyz/ // prod
+http://www.caboverde-vendas-stag.xyz/ // online stag
 
 DATABASE
 
