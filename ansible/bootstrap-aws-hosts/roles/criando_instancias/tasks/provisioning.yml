@@ -1,7 +1,7 @@
 - name: Criando o Sec Group
   ec2_group:
     name: "{{ sec_group_name }}"
-    description: sg giropops
+    description: sg sales devops
     profile: "{{ profile }}"
     region: "{{ region }}"
     rules:

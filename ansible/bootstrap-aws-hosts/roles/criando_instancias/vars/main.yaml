@@ -1,9 +1,9 @@
 ---
 # vars file for criando-instancias
 instance_type: t2.medium
-sec_group_name: giropops
+sec_group_name: sales-devops-tcc
 image: ami-0d527b8c289b4af7f
-keypair: tcclustereuc
+keypair: sales-devops-tcc
 region: eu-central-1
 count: 3
 profile: default
