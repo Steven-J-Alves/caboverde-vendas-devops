@@ -18,21 +18,5 @@ ansible-playbook main.yml -i hosts
 aws k8s kube adm kubelt e kubectl
 
 manual cmds
-sudo su
-cat > /etc/docker/daemon.json <<EOF
-{
-  "exec-opts": ["native.cgroupdriver=systemd"],
-  "log-driver": "json-file",
-  "log-opts": {
-    "max-size": "100m"
-  },
-  "storage-driver": "overlay2"
-}
-EOF
-
-exit
-
-sudo usermod -aG docker $USER
-sudo reboot
 kubectl get nodes
 ---
