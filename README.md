@@ -79,3 +79,8 @@ cors
 nginx proxy
 
 deployment type (canary with istio)
+
+---
+// problemas
+fix anotaions domain in ingress controller
+database not working e prod (maybe is the env file that I added)
