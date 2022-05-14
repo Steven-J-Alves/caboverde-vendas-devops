@@ -58,52 +58,54 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    # - image: 5120/auth-stag
-    #   context: auth
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: 'src/**/*.ts'
-    #         dest: .
-    # - image: 5120/client-stag
-    #   context: client
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: '**/*.js'
-    #         dest: .
-    # - image: 5120/tickets-stag
-    #   context: tickets
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: 'src/**/*.ts'
-    #         dest: .
-    # - image: 5120/orders-stag
-    #   context: orders
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: 'src/**/*.ts'
-    #         dest: .
-    # - image: 5120/expiration-stag
-    #   context: expiration
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: 'src/**/*.ts'
-    #         dest: .
-    # - image: 5120/payments-stag
-    #   context: payments
-    #   docker:
-    #     dockerfile: Dockerfile
-    #   sync:
-    #     manual:
-    #       - src: 'src/**/*.ts'
-    #         dest: .
+    - image: 5120/auth-stag
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: 5120/client-stag
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+    - image: 5120/tickets-stag
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: 5120/orders-stag
+      context: orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: 5120/expiration-stag
+      context: expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: 5120/payments-stag
+      context: payments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
 
+# if do not exits here instead of using this local 
+# bootstrap it will be them from the register if them exists there
