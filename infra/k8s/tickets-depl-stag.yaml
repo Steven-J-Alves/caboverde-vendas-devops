@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tickets
+      app: tickets-stag
   template:
     metadata:
       labels:
-        app: tickets
+        app: tickets-stag
     spec:
       containers:
-        - name: tickets
+        - name: tickets-stag
           image: 5120/tickets-stag
           env:
             - name: NATS_CLIENT_ID
@@ -22,11 +22,11 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: NATS_URL
-              value: 'http://nats-srv:4222'
+              value: 'http://nats-srv-stag:4222'
             - name: NATS_CLUSTER_ID
               value: ticketing
             - name: MONGO_URI
-              value: 'mongodb://tickets-mongo-srv:27017/tickets'
+              value: 'mongodb://tickets-mongo-srv-stag:27017/tickets'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -40,9 +40,9 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: tickets
+    app: tickets-stag
   ports:
-    - name: tickets
+    - name: tickets-stag
       protocol: TCP
       port: 3000
       targetPort: 3000

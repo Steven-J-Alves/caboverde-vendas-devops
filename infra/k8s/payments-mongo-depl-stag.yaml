@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payments-mongo
+      app: payments-mongo-stag
   template:
     metadata:
       labels:
-        app: payments-mongo
+        app: payments-mongo-stag
     spec:
       containers:
-        - name: payments-mongo
+        - name: payments-mongo-stag
           image: mongo
 ---
 apiVersion: v1
@@ -24,9 +24,9 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: payments-mongo
+    app: payments-mongo-stag
   ports:
-    - name: db
+    - name: db-stag
       protocol: TCP
       port: 27017
       targetPort: 27017

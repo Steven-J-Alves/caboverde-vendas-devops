@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: expiration-redis
+      app: expiration-redis-stag
   template:
     metadata:
       labels:
-        app: expiration-redis
+        app: expiration-redis-stag
     spec:
       containers:
-        - name: expiration-redis
+        - name: expiration-redis-stag
           image: redis
 ---
 apiVersion: v1
@@ -24,7 +24,7 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: expiration-redis
+    app: expiration-redis-stag
   ports:
     - name: db
       protocol: TCP

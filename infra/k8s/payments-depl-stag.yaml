@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payments
+      app: payments-stag
   template:
     metadata:
       labels:
-        app: payments
+        app: payments-stag
     spec:
       containers:
-        - name: payments
+        - name: payments-stag
           image: 5120/payments-stag
           env:
             - name: NATS_CLIENT_ID
@@ -22,11 +22,11 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: NATS_URL
-              value: 'http://nats-srv:4222'
+              value: 'http://nats-srv-stag:4222'
             - name: NATS_CLUSTER_ID
               value: ticketing
             - name: MONGO_URI
-              value: 'mongodb://payments-mongo-srv:27017/payments'
+              value: 'mongodb://payments-mongo-srv-stag:27017/payments'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -45,9 +45,9 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: payments
+    app: payments-stag
   ports:
-    - name: payments
+    - name: payments-stag
       protocol: TCP
       port: 3000
       targetPort: 3000

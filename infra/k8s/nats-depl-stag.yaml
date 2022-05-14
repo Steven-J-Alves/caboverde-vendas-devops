@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nats
+      app: nats-stag
   template:
     metadata:
       labels:
-        app: nats
+        app: nats-stag
     spec:
       containers:
-        - name: nats
+        - name: nats-stag
           image: nats-streaming:0.17.0
           args:
             [
@@ -40,13 +40,13 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: nats
+    app: nats-stag
   ports:
-    - name: client
+    - name: client-stag
       protocol: TCP
       port: 4222
       targetPort: 4222
-    - name: monitoring
+    - name: monitoring-stag
       protocol: TCP
       port: 8222
       targetPort: 8222

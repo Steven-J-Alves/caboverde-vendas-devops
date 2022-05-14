@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: client
+      app: client-stag
   template:
     metadata:
       labels:
-        app: client
+        app: client-stag
     spec:
       containers:
-        - name: client
+        - name: client-stag
           image: 5120/client-stag
 ---
 apiVersion: v1
@@ -24,9 +24,9 @@ metadata:
   namespace: staging 
 spec:
   selector:
-    app: client
+    app: client-stag
   ports:
-    - name: client
+    - name: client-stag
       protocol: TCP
       port: 3000
       targetPort: 3000

@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: orders-mongo
+      app: orders-mongo-stag
   template:
     metadata:
       labels:
-        app: orders-mongo
+        app: orders-mongo-stag
     spec:
       containers:
-        - name: orders-mongo
+        - name: orders-mongo-stag
           image: mongo
 ---
 apiVersion: v1
@@ -24,9 +24,9 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: orders-mongo
+    app: orders-mongo-stag
   ports:
-    - name: db
+    - name: db-stag
       protocol: TCP
       port: 27017
       targetPort: 27017

@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tickets-mongo
+      app: tickets-mongo-stag
   template:
     metadata:
       labels:
-        app: tickets-mongo
+        app: tickets-mongo-stag
     spec:
       containers:
-        - name: tickets-mongo
+        - name: tickets-mongo-stag
           image: mongo
 ---
 apiVersion: v1
@@ -24,9 +24,9 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: tickets-mongo
+    app: tickets-mongo-stag
   ports:
-    - name: db
+    - name: db-stag
       protocol: TCP
       port: 27017
       targetPort: 27017

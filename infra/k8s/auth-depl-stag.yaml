@@ -7,18 +7,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: auth-stag
   template:
     metadata:
       labels:
-        app: auth
+        app: auth-stag
     spec:
       containers:
-        - name: auth
+        - name: auth-stag
           image: 5120/auth-stag
           env:
             - name: MONGO_URI
-              value: 'mongodb://auth-mongo-srv:27017/auth'
+              value: 'mongodb://auth-mongo-srv-stag:27017/auth'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -32,9 +32,9 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: auth
+    app: auth-stag
   ports:
-    - name: auth
+    - name: auth-stag
       protocol: TCP
       port: 3000
       targetPort: 3000

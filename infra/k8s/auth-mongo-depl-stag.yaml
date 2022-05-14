@@ -7,14 +7,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth-mongo
+      app: auth-mongo-stag
   template:
     metadata:
       labels:
-        app: auth-mongo
+        app: auth-mongo-stag
     spec:
       containers:
-        - name: auth-mongo
+        - name: auth-mongo-stag
           image: mongo
 ---
 apiVersion: v1
@@ -24,7 +24,7 @@ metadata:
   namespace: staging
 spec:
   selector:
-    app: auth-mongo
+    app: auth-mongo-stag
   ports:
     - name: db
       protocol: TCP
