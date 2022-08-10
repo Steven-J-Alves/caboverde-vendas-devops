@@ -2,3 +2,9 @@
 localhost ansible_connection=local ansible_python_interpreter=python deprecation_warnings=False gather_facts=false
 
 [kubernetes]
+172.31.34.35
+172.31.46.179
+172.31.39.171
+52.59.114.23
+3.126.245.239
+18.197.31.203
