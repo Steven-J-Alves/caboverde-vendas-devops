@@ -1,18 +1,18 @@
-- name: Exibindo o token
+- name: MOSTRANDO OS TOKEN E CONFIGURAR OS WORKER
   debug:
-    msg: "[WORKER] K8S_TOKEN_HOLDER - O token eh {{ hostvars['K8S_TOKEN_HOLDER']['token'] }}"
+    msg: "[WORKER] K8S_TOKEN_HOLDER - O TOKEN: {{ hostvars['K8S_TOKEN_HOLDER']['token'] }}"
 
-- name: Exibindo o hash
+- name: MOSTRANDO OS HASH PARA CONFIGURACAO DOS WORKERS
   debug:
-    msg: "[WORKER] K8S_TOKEN_HOLDER - O hash eh {{ hostvars['K8S_TOKEN_HOLDER']['hash'] }}"
+    msg: "[WORKER] K8S_TOKEN_HOLDER - O HASH: {{ hostvars['K8S_TOKEN_HOLDER']['hash'] }}"
 
-- name: Removendo o cluster
+- name: RESETANDO O CLUSTER
   command: 
     kubeadm reset --force
   register: kubeadm_reset
   changed_when: '"Deleting contents" in kubeadm_reset.stdout'
 
-- name: Adicionando o worker ao cluster k8s
+- name: CONFIGURANDO OS WORKERS E CLUSTER KUBERNETES
   shell:
     kubeadm join --token={{ hostvars['K8S_TOKEN_HOLDER']['token'] }} 
     --discovery-token-ca-cert-hash sha256:{{ hostvars['K8S_TOKEN_HOLDER']['hash'] }} 

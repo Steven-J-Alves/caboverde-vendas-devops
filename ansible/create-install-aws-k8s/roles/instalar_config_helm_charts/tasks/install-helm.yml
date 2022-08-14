@@ -1,5 +1,5 @@
 ---
-- name: Download helm
+- name: OBTENDO HELM CHARTS MANAGER
   get_url: 
     url: "{{ helm_url }}" 
     dest: /tmp/get_helm.sh
@@ -7,10 +7,10 @@
   ignore_errors: true 
   register: download
 
-- name: Instalando Helm
+- name: IMPLANTANDO E CONFIGURANDO HELM PACKAGE
   command: /tmp/get_helm.sh
   when: download
   register: install_helm
 
-- name: Variavel var
+- name: CONFIGURANDO VARIAVEIS PARA HELM
   debug: var=install_helm

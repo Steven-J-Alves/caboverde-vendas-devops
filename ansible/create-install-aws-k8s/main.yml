@@ -3,36 +3,36 @@
   user: ubuntu
   gather_facts: no
   pre_tasks:
-  - name: 'Atualizando o repo'
+  - name: 'PRE TASKS - ATUALIZANDO OS REPOSITORIOS'
     raw: 'apt-get update'
     changed_when: False
-  - name: 'Instalando o Python'
+  - name: 'PRE TASKS - IMPLANTANDO PYTHON 3'
     raw: 'apt-get install -y python'
     register: install_python
     changed_when: '"Setting up python" in install_python.stdout'
   roles:
-  - { role: install_k8s, tags: ["install_k8s_role"]  } 
+  - { role: instalar_config_kubernetes, tags: ["instalar_config_kubernetes_role"]  } 
 
 - hosts: k8s-master
   become: yes
   user: ubuntu
   roles:
-  - { role: create_cluster, tags: ["create_cluster_role"] }
+  - { role: criar_config_cluster, tags: ["criar_config_cluster_role"] }
 
 - hosts: k8s-workers
   become: yes
   user: ubuntu
   roles:
-  - { role: join_workers, tags: ["join_workers_role"] }
+  - { role: config_cluster_workers, tags: ["config_cluster_workers_role"] }
 
 - hosts: k8s-master
   become: yes
   user: ubuntu
   roles: 
-  - { role: install_helm, tags: ["install_helm3_role"] }
+  - { role: instalar_config_helm_charts, tags: ["instalar_config_helm_charts_role"] }
 
 - hosts: k8s-master
   become: yes
   user: ubuntu
   roles: 
-  - { role: install_monit_tools, tags: ["install_monit_tools_role"] }
+  - { role: instalar_config_monitors, tags: ["instalar_config_monitors_role"] }
