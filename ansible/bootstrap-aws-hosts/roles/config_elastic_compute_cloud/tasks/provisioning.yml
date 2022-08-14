@@ -1,4 +1,4 @@
-- name: Criando o Sec Group
+- name: CONSTRUINDO VPC O GRUPO DE SEGURANÇA 
   ec2_group:
     name: "{{ sec_group_name }}"
     description: sg sales devops
@@ -64,18 +64,18 @@
       from_port: 32222
       to_port: 32222
       cidr_ip: 0.0.0.0/0
-      rule_desc: GiropopsApp
+      rule_desc: RuleApp
     - proto: tcp
       from_port: 32111
       to_port: 32111
       cidr_ip: 0.0.0.0/0
-      rule_desc: GiropopsAppProm
+      rule_desc: RuleAppProm
     rules_egress:
     - proto: all
       cidr_ip: 0.0.0.0/0
   register: basic_firewall
 
-- name: Criando a instancia EC2
+- name: CONSTRUINDO AS INSTANCIAS ELASTIC COMPUTE CLOUD
   ec2:
     group: "{{ sec_group_name }}"
     instance_type: "{{ instance_type }}"
@@ -87,33 +87,32 @@
     count: "{{ count }}"
   register: ec2
 
-- name: Adicionando a instancia ao inventario temp
+- name: COLOCANDO AS INSTANCIA NO FICHEIRO DE INVENTARIO
   add_host: name={{ item.public_ip  }} groups=giropops-new
   with_items: "{{ ec2.instances }}"
 
-- name: Adicionando o IP publico da instancia criada ao arquivo hosts
+- name: CONFIGURANDO O ARQUIVO DE HOSTS COM O IP PUBLICO DAS INSTANCIA
   lineinfile:
     dest="./hosts"
     regexp={{ item.public_ip }}
     insertafter="[kubernetes]" line={{ item.public_ip }}
   with_items: "{{ ec2.instances }}"
 
-
-- name: Adicionando o IP privado da instancia criada ao arquivo hosts
+- name: CONFIGURANDO O ARQUIVO DE HOSTS COM O IP PRIVADO DAS INSTANCIA
   lineinfile:
     dest="./hosts"
     regexp={{ item.private_ip }}
     insertafter="[kubernetes]" line={{ item.private_ip }}
   with_items: "{{ ec2.instances }}"
 
-- name: Esperando o SSH
+- name: CONFIGURANDO E ESPERAR O SSH EM CADA INSTANCIA 
   wait_for:
     host={{ item.public_ip }}
     port=22
     state=started
   with_items: "{{ ec2.instances }}"
 
-- name: Adicionando uma tag na instancia
+- name: COLOCANDO AS TAGS NAS INSTANCIA EC2
   ec2_tag:
     resource={{ item.id }} region={{ region }} profile={{ profile }} state=present
   with_items: "{{ ec2.instances }}"
