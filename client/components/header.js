@@ -2,16 +2,19 @@ import Link from 'next/link';
 
 export default ({ currentUser }) => {
   const links = [
-    !currentUser && { label: 'Sign Up', href: '/auth/signup' },
-    !currentUser && { label: 'Sign In', href: '/auth/signin' },
-    currentUser && { label: 'Sell Item', href: '/tickets/new' },
-    currentUser && { label: 'My Orders', href: '/orders' },
-    currentUser && { label: 'Sign Out', href: '/auth/signout' },
+    !currentUser && { label: 'Login', href: '/auth/signin' },
+    !currentUser && { label: 'Register', href: '/auth/signup' },
+    !currentUser && { label: 'About', href: '/' },
+    !currentUser && { label: 'Contact', href: '/' },
+    currentUser && { label: 'Create Item', href: '/tickets/new' },
+    currentUser && { label: 'Item', href: '/orders' },
+    currentUser && { label: 'Contact', href: '/' },
+    currentUser && { label: 'Logoff', href: '/auth/signout' },
   ]
     .filter((linkConfig) => linkConfig)
     .map(({ label, href }) => {
       return (
-        <li key={href}>
+        <li className="link" key={href}>
           <Link href={href}>
             <a>{label}</a>
           </Link>
@@ -20,13 +23,13 @@ export default ({ currentUser }) => {
     });
 
   return (
-    <nav>
+    <nav className="navbar navbar-light bg-light header-nav">
       <Link href="/">
         <a >Cabo Verde Vendas 🇨🇻</a>
       </Link>
 
       <div>
-        <ul>{links}</ul>
+        <ul className="link-container">{links}</ul>  
       </div>
     </nav>
   );
