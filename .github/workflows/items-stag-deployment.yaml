@@ -1,25 +1,25 @@
-name: deploy-auth
+name: deploy-tickets-stag
 
 on:
   push:
-    branches: 
-      - master
+    branches:
+      - release-*
     paths:
-      - 'auth/**'
+      - 'items/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && docker build -t 5120/auth .
+      - run: cd tickets && docker build -t 5120/tickets-stag .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker push 5120/auth
+      - run: docker push 5120/tickets-stag
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save caboverde-vendas-devops
-      - run: kubectl rollout restart deployment auth-depl
+      - run: kubectl rollout restart deployment tickets-depl-stag -n staging

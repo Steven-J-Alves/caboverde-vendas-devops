@@ -1,25 +1,25 @@
-name: deploy-auth-stag
+name: deploy-expiration-stag
 
 on:
   push:
-    branches: 
+    branches:
       - release-*
     paths:
-      - 'auth/**'
+      - 'cancellation/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && docker build -t 5120/auth-stag .
+      - run: cd expiration && docker build -t 5120/expiration-stag .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker push 5120/auth-stag
+      - run: docker push 5120/expiration-stag
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save caboverde-vendas-devops
-      - run: kubectl rollout restart deployment auth-depl-stag -n staging
+      - run: kubectl rollout restart deployment expiration-depl-stag -n staging
