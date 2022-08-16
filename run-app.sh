@@ -6,4 +6,4 @@
 // check minikube
 // check app bootstrap
 
-skaffold.yaml
+skaffold dev
