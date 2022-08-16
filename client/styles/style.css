@@ -11,7 +11,7 @@ html {
 }
 
 .footer {
-  height: 200px;
+  height: 120px;
   background-color: rgb(42, 35, 73);
   color: rgb(150, 150, 150) !important;
   display: flex;
