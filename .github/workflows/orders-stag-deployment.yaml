@@ -1,4 +1,4 @@
-name: deploy-orders-stag
+# name: deploy-orders-stag
 
 on:
   push:

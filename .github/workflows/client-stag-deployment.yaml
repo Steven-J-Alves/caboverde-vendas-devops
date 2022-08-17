@@ -1,4 +1,4 @@
-name: deploy-client-stag
+# name: deploy-client-stag
 
 on:
   push:

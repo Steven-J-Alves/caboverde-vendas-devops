@@ -1,4 +1,4 @@
-name: deploy-tickets-stag
+# name: deploy-tickets-stag
 
 on:
   push:

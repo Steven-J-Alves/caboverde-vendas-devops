@@ -1,4 +1,4 @@
-name: deploy-payments-stag
+# name: deploy-payments-stag
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: deploy-auth-stag
+# name: deploy-auth-stag
 
 on:
   push:

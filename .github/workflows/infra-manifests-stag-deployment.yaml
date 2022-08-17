@@ -1,4 +1,4 @@
-name: deploy-manifests-stag
+# name: deploy-manifests-stag
 
 on:
   push:
