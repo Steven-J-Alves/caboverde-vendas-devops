@@ -1,9 +1,4 @@
-import Link from 'next/link';
-
-const appVersion = process.env.NEXT_PUBLIC_APP_VERSION
-console.log("🚀 ~ file: footer.js ~ line 4 ~ appVersion", appVersion)
-
-export default ({ currentUser }) => {
+export default () => {
   return (
     <footer className="navbar navbar-light footer">
       <p >Cabo Verde Vendas - Ecommerce</p>
