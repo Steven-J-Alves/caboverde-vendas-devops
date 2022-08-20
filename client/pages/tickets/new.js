@@ -52,6 +52,10 @@ const NewTicket = () => {
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
+            <div>
+              <label>Upload item image</label>
+              <input type="file" className="form-control form-control-lg"/>
+            </div>
           </div>
           {errors}
           <button className="btn btn-dark">Submit</button>
