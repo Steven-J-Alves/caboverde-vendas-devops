@@ -43,7 +43,7 @@ export default () => {
           </div>
         </div>
         {errors}
-        <button  class="btn btn-dark">Sign Up</button>
+        <button className="btn btn-dark">Sign Up</button>
       </form>
     </div>
   );
