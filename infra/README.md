@@ -1,2 +1,2 @@
 update ci automation  test branching
-run pipe 5
+run pipe 6
