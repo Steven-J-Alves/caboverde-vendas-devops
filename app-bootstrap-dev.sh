@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# digitalOcean setup k8s
 kubectl create namespace staging  
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=wd32d3wdasd2awd2dwdwdwd
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=wd32d3wdasd2awd2dwdwdwd -n staging

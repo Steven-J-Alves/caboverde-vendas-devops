@@ -84,3 +84,11 @@ deployment type (canary with istio)
 // problemas
 fix anotaions domain in ingress controller
 database not working e prod (maybe is the env file that I added)
+
+------------------
+CLOUD
+In client api folder -> baseURL: 'http://www.caboverde-vendas-prod.xyz/',
+1. config doctl with k8s context
+doctl kubernetes cluster kubeconfig save caboverde-vendas-devops
+2. run app-bootstrap-sh
+3. update readme on master infra run .github/workflows/infra-manifests-prod-deployment.yaml 
