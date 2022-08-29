@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: staging.caboverde-vendas.dev
+    - host: staging.caboverde-vendas-prod.xyz
       http:
         paths:
           - path: /api/payments/?(.*)
@@ -46,3 +46,4 @@ spec:
                 name: client-srv-stag
                 port:
                   number: 3000
+                  
