@@ -23,3 +23,8 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - run: doctl kubernetes cluster kubeconfig save caboverde-vendas-devops
       - run: kubectl rollout restart deployment client-depl
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd authentication && npm install && npm run test:ci
