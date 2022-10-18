@@ -10,6 +10,10 @@
     raw: 'apt-get install -y python'
     register: install_python
     changed_when: '"Setting up python" in install_python.stdout'
+  - name: 'PRE TASKS - IMPLANTANDO_STRESS'
+    raw: 'apt-get install stress'
+    register: install_stress
+    changed_when: '"Setting up python" in install_stress.stdout'
   roles:
   - { role: instalar_config_kubernetes, tags: ["instalar_config_kubernetes_role"]  } 
 
