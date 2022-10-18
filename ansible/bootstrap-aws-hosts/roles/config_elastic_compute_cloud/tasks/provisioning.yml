@@ -70,9 +70,8 @@
       to_port: 32111
       cidr_ip: 0.0.0.0/0
       rule_desc: RuleAppProm
-    # - proto: all
-    #   cidr_ip: 0.0.0.0/0
-    #   rule_desc: all traffic enable just for access PO svc
+    - proto: all
+      cidr_ip: 0.0.0.0/0
     rules_egress:
     - proto: all
       cidr_ip: 0.0.0.0/0
