@@ -34,6 +34,6 @@
     packages:
     - kubelet=1.20.0-00 
     - kubeadm=1.20.0-00 
-    - kubectl
+    - kubectl=1.20.0-00
   notify: Restart Kubelet
 
