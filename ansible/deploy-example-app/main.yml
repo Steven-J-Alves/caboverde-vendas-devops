@@ -1,0 +1,5 @@
+- hosts: k8s-master
+  become: yes
+  user: ubuntu
+  roles:
+  - { role: deploy_bad_app, tags: ["deploy_bad_app_role"] }
