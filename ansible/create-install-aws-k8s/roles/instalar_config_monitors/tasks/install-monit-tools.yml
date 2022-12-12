@@ -13,7 +13,7 @@
   register: prometheus_install
   changed_when: True
 
-- name: UPLOADS ALERTS FILES
+- name: UPLOADS ALERTS FILES CONFIG
   become: true 
   copy:
     src: /home/stevenalves/Desktop/caboverde-vendas-devops/alerts
@@ -22,45 +22,14 @@
     group: root
     mode: '0644'
 
-- name: CONFIG ALERTS
+- name: DELETE OLD CONFIG ALERTS
   become: true 
   command: kubectl delete secret alertmanager-prometheus-monitor-prometh-alertmanager
   register: deleting_secret_alertmanager
   changed_when: '"Update Complete" in deleting_secret_alertmanager.stdout'
 
-- name: CONFIG ALERTS ADD FILE
+- name: CREATE CONFIG ALERTS
   become: true 
   command: kubectl create secret generic --from-file=/home/ubuntu/alerts/alertmanager.yaml alertmanager-prometheus-monitor-prometh-alertmanager
   register: create_secret_alertmanager
   changed_when: '"Update Complete" in create_secret_alertmanager.stdout'
-
-- name: DEPLOY BAD APP
-  become: true 
-  command: kubectl apply -f /home/ubuntu/alerts/bad-pod.yaml
-  register: deploy_bad_app
-  changed_when: '"Update Complete" in deploy_bad_app.stdout'
-
-- name: GET PODS
-  become: true 
-  command: kubectl get pods
-  register: get_pods
-  changed_when: '"Update Complete" in get_pods.stdout'
-
-- name: GET SVC
-  become: true 
-  command: kubectl get svc
-  register: get_svc
-  changed_when: '"Update Complete" in get_svc.stdout'
-
-- name: VER PODS
-  debug: var=get_pods
-
-- name: VER SVC
-  debug: var=get_svc
-
-
-# - name: APPLY STRESS FOR TEST ON INFRA
-#   become: true 
-#   command: stress -c 5 -i 10 -m 1 --vm-bytes 2128M -t 60s
-#   register: run_test_stress
-#   changed_when: '"Update Complete" in run_test_stress.stdout'
