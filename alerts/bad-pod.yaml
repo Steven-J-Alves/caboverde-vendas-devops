@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: bad
-  replicas: 2 
+  replicas: 2
   template:
     metadata:
       labels:
@@ -14,5 +14,6 @@ spec:
     spec:
       containers:
       - name: bad
-        image: ubuntu:18.04
-        command: ["10 print('it is 1982')\ni20 goto 10"]
+        image: debian
+        command: ["/bin/sh"]
+        args: ["-c", "apt-get update -y && apt-get install stress -y && stress -c 5 -i 10 -m 1 --vm-bytes 2128M -t 60s && 10print"]
