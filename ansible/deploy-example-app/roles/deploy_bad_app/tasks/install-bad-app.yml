@@ -1,0 +1,5 @@
+- name: DEPLOY BAD APP
+  become: true 
+  command: kubectl apply -f /home/ubuntu/alerts/bad-pod.yaml
+  register: deploy_bad_app
+  changed_when: '"Update Complete" in deploy_bad_app.stdout'
