@@ -92,3 +92,7 @@ In client api folder -> baseURL: 'http://www.caboverde-vendas-prod.xyz/',
 doctl kubernetes cluster kubeconfig save caboverde-vendas-devops
 2. run app-bootstrap-sh
 3. update readme on master infra run .github/workflows/infra-manifests-prod-deployment.yaml 
+
+grafana credentials
+admin
+prom-operator
