@@ -40,6 +40,25 @@
   register: deploy_bad_app
   changed_when: '"Update Complete" in deploy_bad_app.stdout'
 
+- name: GET PODS
+  become: true 
+  command: kubectl get pods
+  register: get_pods
+  changed_when: '"Update Complete" in get_pods.stdout'
+
+- name: GET SVC
+  become: true 
+  command: kubectl get svc
+  register: get_svc
+  changed_when: '"Update Complete" in get_svc.stdout'
+
+- name: VER PODS
+  debug: var=get_pods
+
+- name: VER SVC
+  debug: var=get_svc
+
+
 # - name: APPLY STRESS FOR TEST ON INFRA
 #   become: true 
 #   command: stress -c 5 -i 10 -m 1 --vm-bytes 2128M -t 60s
